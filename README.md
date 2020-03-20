@@ -1,8 +1,11 @@
 # com.aghstrategies.extracheck
 
-![Screenshot](/images/screenshot.png)
+This extension adds some extra system checks including:
 
-(*FIXME: In one or two paragraphs, describe what the extension does and why one would download it. *)
+###  Extra Check: CIVICRM_TEMPLATE_COMPILE_CHECK
+
+Which checks whether `CIVICRM_TEMPLATE_COMPILE_CHECK` is defined as False. If `CIVICRM_TEMPLATE_COMPILE_CHECK` is set as anything other then FALSE as system notice is generated. For more information on why this matters visit: https://civicrm.org/blog/daved/new-setting-available-in-517-should-improve-performance-on-most-sites
+![Extra Check: CIVICRM_TEMPLATE_COMPILE_CHECK screenshot](/images/xtraX.png)
 
 The extension is licensed under [AGPL-3.0](LICENSE.txt).
 
@@ -22,7 +25,7 @@ install it with the command-line tool [cv](https://github.com/civicrm/cv).
 
 ```bash
 cd <extension-dir>
-cv dl com.aghstrategies.extracheck@https://github.com/FIXME/com.aghstrategies.extracheck/archive/master.zip
+cv dl com.aghstrategies.extracheck@https://github.com/aghstrategies/com.aghstrategies.extracheck/archive/master.zip
 ```
 
 ## Installation (CLI, Git)
@@ -31,14 +34,14 @@ Sysadmins and developers may clone the [Git](https://en.wikipedia.org/wiki/Git) 
 install it with the command-line tool [cv](https://github.com/civicrm/cv).
 
 ```bash
-git clone https://github.com/FIXME/com.aghstrategies.extracheck.git
+git clone https://github.com/aghstrategies/com.aghstrategies.extracheck.git
 cv en extracheck
 ```
 
 ## Usage
 
-(* FIXME: Where would a new user navigate to get started? What changes would they see? *)
+Go to the CiviCRM System Status page (CiviCRM Menu -> Administer -> Administration Console -> System Status). Extra checks should show up here if they are failing.
 
 ## Known Issues
 
-(* FIXME *)
+None Yet.

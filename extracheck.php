@@ -3,10 +3,30 @@
 require_once 'extracheck.civix.php';
 use CRM_Extracheck_ExtensionUtil as E;
 
+
+/**
+ * Implementation of hook_civicrm_check
+ *
+ * Add a check to the status page/System.check results if $ctcc is TRUE.
+ */
+function extracheck_civicrm_check(&$messages) {
+  // check for define in civicrm.settings.php as FALSE, otherwise returns TRUE
+  $ctcc =  CRM_Utils_Constant::value('CIVICRM_TEMPLATE_COMPILE_CHECK', TRUE);
+  if ($ctcc) {
+    $messages[] = new CRM_Utils_Check_Message(
+      'com.aghstrategies.extracheck',
+      ts("<p>'CIVICRM_TEMPLATE_COMPILE_CHECK' is not set to FALSE.</p><p> 'CIVICRM_TEMPLATE_COMPILE_CHECK' should be set to FALSE for all production sites for more information see this <a href='%1' title='Blog post'>blog post</a>.</p>", [1 => "https://civicrm.org/blog/daved/new-setting-available-in-517-should-improve-performance-on-most-sites"]),
+      ts('Extra Check: CIVICRM_TEMPLATE_COMPILE_CHECK'),
+      \Psr\Log\LogLevel::NOTICE,
+      'fa-check'
+    );
+  }
+}
+
 /**
  * Implements hook_civicrm_config().
  *
- * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_config/ 
+ * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_config/
  */
 function extracheck_civicrm_config(&$config) {
   _extracheck_civix_civicrm_config($config);
@@ -23,7 +43,7 @@ function extracheck_civicrm_xmlMenu(&$files) {
 
 /**
  * Implements hook_civicrm_install().
- *
+ *;
  * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_install
  */
 function extracheck_civicrm_install() {
